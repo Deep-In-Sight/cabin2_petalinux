@@ -1,0 +1,30 @@
+/include/ "system-conf.dtsi"
+/ {
+    chosen {
+        bootargs = "console=ttyPS0,115200 earlycon root=/dev/mmcblk0p2 rw rootwait uio_pdrv_genirq.of_id=generic-uio";
+        stdout-path = "serial0:115200n8";
+    };
+    usb_phy0: phy0@e0002000 {
+        compatible = "ulpi-phy";
+        #phy-cells = <0>;
+        reg = <0xe0002000 0x1000>;
+        view-port = <0x0170>;
+        drv-vbus;
+    };
+};
+
+&usb0 {
+    dr_mode = "peripheral";
+    usb-phy = <&usb_phy0>;
+};
+
+/delete-node/ &mipi_csi2_rx_subsyst_0;
+
+&getPhaseMap_0 {
+    compatible = "generic-uio";
+    reg = <0x40000000 0x10000>, <0x0a000000 0x4000000>;
+    reg-names = "registers", "framebuffers";
+	interrupt-names = "tof_done";
+    interrupt-parent = <&intc>;
+	interrupts = <0 29 1>;
+};
