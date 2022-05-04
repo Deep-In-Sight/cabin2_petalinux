@@ -5,7 +5,7 @@
 #ifdef __linux__
 
 /***************************** Include Files *********************************/
-#include "xgetphasemap.h"
+#include "xgetphasemap2.h"
 
 /***************** Macros (Inline Functions) Definitions *********************/
 #define MAX_UIO_PATH_SIZE       256
@@ -17,18 +17,18 @@
 typedef struct {
     u64 addr;
     u32 size;
-} XGetphasemap_uio_map;
+} XGetphasemap2_uio_map;
 
 typedef struct {
     int  uio_fd;
     int  uio_num;
     char name[ MAX_UIO_NAME_SIZE ];
     char version[ MAX_UIO_NAME_SIZE ];
-    XGetphasemap_uio_map maps[ MAX_UIO_MAPS ];
-} XGetphasemap_uio_info;
+    XGetphasemap2_uio_map maps[ MAX_UIO_MAPS ];
+} XGetphasemap2_uio_info;
 
 /***************** Variable Definitions **************************************/
-static XGetphasemap_uio_info uio_info;
+static XGetphasemap2_uio_info uio_info;
 
 /************************** Function Implementation *************************/
 static int line_from_file(char* filename, char* linebuf) {
@@ -46,19 +46,19 @@ static int line_from_file(char* filename, char* linebuf) {
     return 0;
 }
 
-static int uio_info_read_name(XGetphasemap_uio_info* info) {
+static int uio_info_read_name(XGetphasemap2_uio_info* info) {
     char file[ MAX_UIO_PATH_SIZE ];
     sprintf(file, "/sys/class/uio/uio%d/name", info->uio_num);
     return line_from_file(file, info->name);
 }
 
-static int uio_info_read_version(XGetphasemap_uio_info* info) {
+static int uio_info_read_version(XGetphasemap2_uio_info* info) {
     char file[ MAX_UIO_PATH_SIZE ];
     sprintf(file, "/sys/class/uio/uio%d/version", info->uio_num);
     return line_from_file(file, info->version);
 }
 
-static int uio_info_read_map_addr(XGetphasemap_uio_info* info, int n) {
+static int uio_info_read_map_addr(XGetphasemap2_uio_info* info, int n) {
     int ret;
     char file[ MAX_UIO_PATH_SIZE ];
     info->maps[n].addr = UIO_INVALID_ADDR;
@@ -71,7 +71,7 @@ static int uio_info_read_map_addr(XGetphasemap_uio_info* info, int n) {
     return 0;
 }
 
-static int uio_info_read_map_size(XGetphasemap_uio_info* info, int n) {
+static int uio_info_read_map_size(XGetphasemap2_uio_info* info, int n) {
     int ret;
     char file[ MAX_UIO_PATH_SIZE ];
     sprintf(file, "/sys/class/uio/uio%d/maps/map%d/size", info->uio_num, n);
@@ -83,8 +83,8 @@ static int uio_info_read_map_size(XGetphasemap_uio_info* info, int n) {
     return 0;
 }
 
-int XGetphasemap_Initialize(XGetphasemap *InstancePtr, const char* InstanceName) {
-	XGetphasemap_uio_info *InfoPtr = &uio_info;
+int XGetphasemap2_Initialize(XGetphasemap2 *InstancePtr, const char* InstanceName) {
+	XGetphasemap2_uio_info *InfoPtr = &uio_info;
 	struct dirent **namelist;
     int i, n;
     char* s;
@@ -131,8 +131,8 @@ int XGetphasemap_Initialize(XGetphasemap *InstancePtr, const char* InstanceName)
     return XST_SUCCESS;
 }
 
-int XGetphasemap_Release(XGetphasemap *InstancePtr) {
-	XGetphasemap_uio_info *InfoPtr = &uio_info;
+int XGetphasemap2_Release(XGetphasemap2 *InstancePtr) {
+	XGetphasemap2_uio_info *InfoPtr = &uio_info;
 
     assert(InstancePtr != NULL);
     assert(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);

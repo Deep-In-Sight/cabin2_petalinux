@@ -4,13 +4,13 @@
 # ==============================================================
 OPTION psf_version = 2.1;
 
-BEGIN driver getPhaseMap
+BEGIN driver getPhaseMap2
 
- OPTION supported_peripherals = (getPhaseMap_v1_0 );
+ OPTION supported_peripherals = (getPhaseMap2_v2_0 );
  OPTION driver_state = ACTIVE;
  OPTION copyfiles = all;
- OPTION name = getPhaseMap;
- OPTION version = 1.0;
+ OPTION name = getPhaseMap2;
+ OPTION version = 2.0;
 
 END driver
 

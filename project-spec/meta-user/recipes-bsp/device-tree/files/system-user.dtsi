@@ -20,7 +20,7 @@
 
 /delete-node/ &mipi_csi2_rx_subsyst_0;
 
-&getPhaseMap_0 {
+&getPhaseMap2_0 {
     compatible = "generic-uio";
     reg = <0x40000000 0x10000>, <0x0a000000 0x4000000>;
     reg-names = "registers", "framebuffers";

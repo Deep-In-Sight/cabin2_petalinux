@@ -24,22 +24,22 @@
 // 0x10 : Data signal of regCtrl
 //        bit 31~0 - regCtrl[31:0] (Read/Write)
 // 0x14 : reserved
-// 0x18 : Data signal of frame02_offset
-//        bit 31~0 - frame02_offset[31:0] (Read/Write)
+// 0x18 : Data signal of port0_offset
+//        bit 31~0 - port0_offset[31:0] (Read/Write)
 // 0x1c : reserved
-// 0x20 : Data signal of frame13_offset
-//        bit 31~0 - frame13_offset[31:0] (Read/Write)
+// 0x20 : Data signal of port1_offset
+//        bit 31~0 - port1_offset[31:0] (Read/Write)
 // 0x24 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
-#define XGETPHASEMAP_CONTROL_ADDR_AP_CTRL             0x00
-#define XGETPHASEMAP_CONTROL_ADDR_GIE                 0x04
-#define XGETPHASEMAP_CONTROL_ADDR_IER                 0x08
-#define XGETPHASEMAP_CONTROL_ADDR_ISR                 0x0c
-#define XGETPHASEMAP_CONTROL_ADDR_REGCTRL_DATA        0x10
-#define XGETPHASEMAP_CONTROL_BITS_REGCTRL_DATA        32
-#define XGETPHASEMAP_CONTROL_ADDR_FRAME02_OFFSET_DATA 0x18
-#define XGETPHASEMAP_CONTROL_BITS_FRAME02_OFFSET_DATA 32
-#define XGETPHASEMAP_CONTROL_ADDR_FRAME13_OFFSET_DATA 0x20
-#define XGETPHASEMAP_CONTROL_BITS_FRAME13_OFFSET_DATA 32
+#define XGETPHASEMAP2_CONTROL_ADDR_AP_CTRL           0x00
+#define XGETPHASEMAP2_CONTROL_ADDR_GIE               0x04
+#define XGETPHASEMAP2_CONTROL_ADDR_IER               0x08
+#define XGETPHASEMAP2_CONTROL_ADDR_ISR               0x0c
+#define XGETPHASEMAP2_CONTROL_ADDR_REGCTRL_DATA      0x10
+#define XGETPHASEMAP2_CONTROL_BITS_REGCTRL_DATA      32
+#define XGETPHASEMAP2_CONTROL_ADDR_PORT0_OFFSET_DATA 0x18
+#define XGETPHASEMAP2_CONTROL_BITS_PORT0_OFFSET_DATA 32
+#define XGETPHASEMAP2_CONTROL_ADDR_PORT1_OFFSET_DATA 0x20
+#define XGETPHASEMAP2_CONTROL_BITS_PORT1_OFFSET_DATA 32
 
