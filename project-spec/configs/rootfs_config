@@ -4020,6 +4020,11 @@ CONFIG_imagefeature-debug-tweaks=y
 CONFIG_auto-login=y
 
 #
+# apps 
+#
+CONFIG_usbgadget=y
+
+#
 # user packages 
 #
 CONFIG_iperf3=y

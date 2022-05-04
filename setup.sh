@@ -3,7 +3,8 @@ source .petalinux/metadata
 PROJECT=$(pwd)
 PROJECT_NAME=$(basename $PROJECT)
 MODULE=${MODULE:-"vdma-proxy"}
-HARDWAREPATH=$(dirname $HARDWARE_PATH})
+CURRENT_HARDWAREPATH=$(dirname $HARDWARE_PATH})
+HARDWAREPATH=${HARDWAREPATH:-$CURRENT_HARDWAREPATH}
 USER_DT=${PROJECT}/project-spec/meta-user/recipes-bsp/device-tree/files/
 BOARD_DT=${PROJECT}/components/plnx_workspace/device-tree/device-tree/
 KERNEL_SRC=${PROJECT}/build/tmp/work-shared/zynq-generic/kernel-source/
@@ -14,12 +15,12 @@ PREBUILT=${PROJECT}/pre-built/linux/images/
 BOOT_MNT=${BOOT_MNT:-"/media/$USER/boot"}
 ROOTFS_MNT=${ROOTFS_MNT:-"/media/$USER/rootfs"}
 
-if ls ${PROJECT}/components/yocto/sysroots/cortexa9* 1> /dev/null 2>&1 ; then
+if grep "ARCH_ARM=y" ${PROJECT}/project-spec/configs/config 1> /dev/null 2>&1 ; then
 	ARCH=arm
-	echo ARCH=$ARCH
-elif ls ${PROJECT}/components/yocto/sysroots/aarch64* 1> /dev/null 2>&1 ; then
-	ARCH=aarch64
-	echo ARCH=$ARCH
+	echo "ARCH=arm"
+elif grep "ARCH_AARCH64=y" ${PROJECT}/project-spec/configs/config 1> /dev/null 2>&1 ; then
+	ARCH=AARCH64
+	echo "ARCH=aarch64"
 else 
 	echo Unknow architecture
 fi
@@ -107,7 +108,7 @@ alias clean="petalinux-build -x mrproper -f"
 alias config="petalinux-config"
 alias configk="petalinux-config -c kernel"
 alias configr="petalinux-config -c rootfs"
-alias updatehw="petalinux-config --get-hw-description $HARDWAREPATH"
+alias updatehw="petalinux-config --silentconfig --get-hw-description $HARDWAREPATH"
 alias build="petalinux-build"
 alias buildk="petalinux-build -c kernel"
 alias buildr="petalinux-build -c rootfs"
