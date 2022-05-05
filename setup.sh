@@ -1,4 +1,3 @@
-source .petalinux/metadata
 
 PROJECT=$(pwd)
 PROJECT_NAME=$(basename $PROJECT)
