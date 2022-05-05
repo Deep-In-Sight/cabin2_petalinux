@@ -2,3 +2,4 @@
 #These packages will get added into rootfs menu entry
 CONFIG_iperf3
 CONFIG_usbgadget
+CONFIG_imx556-server

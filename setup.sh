@@ -3,8 +3,7 @@ source .petalinux/metadata
 PROJECT=$(pwd)
 PROJECT_NAME=$(basename $PROJECT)
 MODULE=${MODULE:-"vdma-proxy"}
-CURRENT_HARDWAREPATH=$(dirname $HARDWARE_PATH})
-HARDWAREPATH=${HARDWAREPATH:-$CURRENT_HARDWAREPATH}
+HARDWAREPATH=${PROJECT}
 USER_DT=${PROJECT}/project-spec/meta-user/recipes-bsp/device-tree/files/
 BOARD_DT=${PROJECT}/components/plnx_workspace/device-tree/device-tree/
 KERNEL_SRC=${PROJECT}/build/tmp/work-shared/zynq-generic/kernel-source/
