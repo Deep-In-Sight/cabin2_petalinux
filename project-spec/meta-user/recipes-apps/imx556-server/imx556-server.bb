@@ -7,8 +7,8 @@ SECTION = "PETALINUX/apps"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "git://gitlab.dinsight.ai/lnlinh93/imx556_server.git;protocol=http "
-SRCREV = "8bae6d2a7270321113bea3f97deb519cd815dad7"
+SRC_URI = "git://git@github.com:/Deep-In-Sight/imx556_server.git;protocol=ssh"
+SRCREV = "da6689ea422ae2e5538f34ebba462ccf413833d1"
 
 S = "${WORKDIR}/git"
 
